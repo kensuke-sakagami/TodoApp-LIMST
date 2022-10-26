@@ -19,12 +19,9 @@ public class TodoListController {
 	@GetMapping("/")
 	public String getTodoList(Model model) {
 		List<TodoDetails> trueTodoDetailsList = dao.TrueSelectMany();
-		
+
 		List<TodoDetails> falseTodoDetailsList = dao.FalseSelectMany();
-		
-		System.out.println(trueTodoDetailsList);
-		System.out.println(falseTodoDetailsList);
-		
+
 		model.addAttribute("trueTodoDetailsList", trueTodoDetailsList);
 		model.addAttribute("falseTodoDetailsList", falseTodoDetailsList);
 		//TodoList.htmlに遷移
