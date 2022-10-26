@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+<meta charset="UTF-8"></meta>
+
+<!-- Bootstrapの設定 -->
+<link th:href="@{/webjars/bootstrap/4.6.1/css/bootstrap.min.css}"
+	rel="stylesheet"></link>
+<script th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.6.1/js/bootstrap.min.js}"></script>
+
+<!-- CSSの読込 -->
+<link th:href="@{/css/home.css}" rel="stylesheet"></link>
+
+<title>Home</title>
+</head>
+<body>
+	<div class="container">
+		<h1 class="col text-center">TodoList</h1>
+		<!-- todo追加画面へのリンク作成 -->
+		<a>TODO追加</a>
+		<h2>未完了リスト</h2>
+		<table class="table table-bordered table-hover table-striped">
+			<tr>
+				<th class="info col-sm-2 text-center">id</th>
+				<th class="info col-sm-2 text-center">タイトル</th>
+				<th class="info col-sm-2 text-center">期日</th>
+				<th class="info col-sm-2 text-center"></th>
+			</tr>
+			<tr th:each="month:${monthList}">
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>
+					<!--Todo 該当月勤務情報画面へのリンク --> <a class="btn btn-primary">詳細</a>
+				</td>
+			</tr>
+		</table>
+		<h2>完了リスト</h2>
+		<table class="table table-bordered table-hover table-striped">
+			<tr>
+				<th class="info col-sm-2 text-center">id</th>
+				<th class="info col-sm-2 text-center">タイトル</th>
+				<th class="info col-sm-2 text-center">期日</th>
+				<th class="info col-sm-2 text-center"></th>
+			</tr>
+			<tr th:each="month:${monthList}">
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>
+					<!--Todo詳細へのリンク --> <a class="btn btn-primary">詳細</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
