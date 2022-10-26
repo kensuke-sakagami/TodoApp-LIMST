@@ -31,7 +31,7 @@
 			</tr>
 			<tr th:each="todoDetails:${falseTodoDetailsList}">
 				<td th:text="${todoDetails.id}"></td>
-				<td th:text="${todoDetails.title}"></td>
+				<td class="text-decoration" th:text="${todoDetails.title}"></td>
 				<td th:text="${todoDetails.timeLimit}"></td>
 				<td><a class="btn btn-primary">詳細</a></td>
 			</tr>
@@ -46,7 +46,7 @@
 			</tr>
 			<tr th:each="todoDetails:${trueTodoDetailsList}">
 				<td th:text="${todoDetails.id}"></td>
-				<td th:text="${todoDetails.title}"></td>
+				<td th:text="${todoDetails.title}" style = "text-decoration: line-through; "></td>
 				<td th:text="${todoDetails.timeLimit}"></td>
 				<td><a class="btn btn-primary">詳細</a></td>
 			</tr>
