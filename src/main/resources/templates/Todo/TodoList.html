@@ -46,11 +46,13 @@
 			</tr>
 			<tr th:each="todoDetails:${trueTodoDetailsList}">
 				<td th:text="${todoDetails.id}"></td>
-				<td th:text="${todoDetails.title}" style = "text-decoration: line-through; "></td>
+				<td th:text="${todoDetails.title}"
+					style="text-decoration: line-through;"></td>
 				<td th:text="${todoDetails.timeLimit}"></td>
 				<td><a class="btn btn-primary">詳細</a></td>
 			</tr>
 		</table>
+		<a class="btn btn-primary">完了済みを削除</a>
 	</div>
 </body>
 </html>
