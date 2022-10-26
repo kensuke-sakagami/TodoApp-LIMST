@@ -1,0 +1,60 @@
+package com.example.demo.domain.repository.jdbc;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+import com.example.demo.domain.model.TodoDetails;
+import com.example.demo.domain.repository.TodoDetailsDao;
+
+@Repository
+public class TodoDetailsJdbcImpl implements TodoDetailsDao{
+	@Autowired
+	JdbcTemplate jdbc;
+
+	// TodoDetailsテーブルの全データを取得.
+	@Override
+	public List<TodoDetails> TrueSelectMany() throws DataAccessException {
+		//TodoDetailsテーブルのデータを全件取得
+		List<Map<String, Object>> getList = jdbc.queryForList("SELECT * FROM todo_details WHERE is_done = TRUE"); 
+		//結果返却用の変数List 
+		List<TodoDetails> todoDetailsList = new ArrayList<>();
+		//取得したデータを結果返却用のListに格納していく
+		for(Map<String,Object> map:getList) {
+			//TodoDetailsインスタンスの作成
+			TodoDetails todoDetails = new TodoDetails();
+			//TodoDetailsインスタンスに取得したデータをセット
+			todoDetails.setId((int)map.get("id"));
+			todoDetails.setTitle((String)map.get("title"));
+			todoDetails.setTimeLimit(((java.sql.Date)map.get("time_limit")).toLocalDate());
+			
+			todoDetailsList.add(todoDetails);
+		}
+		return todoDetailsList;
+	}
+	
+	@Override
+	public List<TodoDetails> FalseSelectMany() throws DataAccessException {
+		//TodoDetailsテーブルのデータを全件取得
+		List<Map<String, Object>> getList = jdbc.queryForList("SELECT * FROM todo_details WHERE is_done = FALSE"); 
+		//結果返却用の変数List 
+		List<TodoDetails> todoDetailsList = new ArrayList<>();
+		//取得したデータを結果返却用のListに格納していく
+		for(Map<String,Object> map:getList) {
+			//TodoDetailsインスタンスの作成
+			TodoDetails todoDetails = new TodoDetails();
+			//TodoDetailsインスタンスに取得したデータをセット
+			todoDetails.setId((int)map.get("id"));
+			todoDetails.setTitle((String)map.get("title"));
+			todoDetails.setTimeLimit(((java.sql.Date)map.get("time_limit")).toLocalDate());
+			
+			todoDetailsList.add(todoDetails);
+		}
+		return todoDetailsList;
+	}
+}
