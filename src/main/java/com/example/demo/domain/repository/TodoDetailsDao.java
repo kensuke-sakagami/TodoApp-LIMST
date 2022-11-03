@@ -12,4 +12,8 @@ public interface TodoDetailsDao {
 
 	public List<TodoDetails> FalseSelectMany() throws DataAccessException;
 
+	public TodoDetails selectOne(int id) throws DataAccessException;
+
+	public int updateOne(TodoDetails todoDetails) throws DataAccessException;
+
 }

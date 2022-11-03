@@ -33,7 +33,7 @@
 				<td th:text="${todoDetails.id}"></td>
 				<td class="text-decoration" th:text="${todoDetails.title}"></td>
 				<td th:text="${todoDetails.timeLimit}"></td>
-				<td><a href="#">詳細</a></td>
+				<td><a th:href="@{'/'+${todoDetails.id}}">詳細</a></td>
 			</tr>
 		</table>
 		<h2 class="text-center">完了リスト</h2>
@@ -49,7 +49,7 @@
 				<td th:text="${todoDetails.title}"
 					style="text-decoration: line-through;"></td>
 				<td th:text="${todoDetails.timeLimit}"></td>
-				<td><a href="#">詳細</a></td>
+				<td><a th:href="@{'/'+${todoDetails.id}}">詳細</a></td>
 			</tr>
 		</table>
 		<a class="btn btn-primary">完了済みを削除</a>

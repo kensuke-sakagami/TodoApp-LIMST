@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8"></meta>
+
+<!-- Bootstrapの設定 -->
+<link th:href="@{/webjars/bootstrap/4.6.1/css/bootstrap.min.css}"
+	rel="stylesheet"></link>
+<script th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.6.1/js/bootstrap.min.js}"></script>
+<!-- CSSの読込 -->
+<link th:href="@{/css/todo.css}" rel="stylesheet"></link>
+<title>TodoDetail</title>
+</head>
+<body>
+	<div class="padding">
+		<h1 class="text-center">TodoDetail</h1>
+		<form method="post" th:action="@{'/'+${id}}"
+			th:object="${changeTodoDetailForm}">
+			<div class="font-weight-bold text-center">タイトル</div>
+			<div class="form-group margin-contract">
+				<input type="text" class="form-control" th:field="*{title}">
+			</div>
+			<div class="font-weight-bold text-center">期日</div>
+			<div class="form-group margin-contract">
+				<input type="date" class="form-control" th:field="*{date}" />
+			</div>
+			<div class="form-group">
+				<div class="container text-center">
+					<input type="checkbox" value=true id=completion-check
+						th:field="*{isDone}" /> <label for=completion-check>完了フラグ</label>
+				</div>
+			</div>
+			<!-- エラーメッセージ -->
+			<ul>
+				<li th:each="error:${#fields.detailedErrors()}"><span
+					th:text="${error.message}">Error message</span></li>
+			</ul>
+			<button type="button" class="btn btn-primary d-block mx-auto"
+				data-toggle="modal" data-target="#testModal">更新</button>
+			<!-- ボタン・リンククリック後に表示される画面の内容 -->
+			<div class="modal fade" id="testModal" tabindex="-1" role="dialog"
+				aria-labelledby="basicModal" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<h2>変更確認</h2>
+						<div class="modal-body">
+							<label>本当にを変更しますか？</label>
+						</div>
+						<div class="modal-footer">
+							<button type="submit" class="btn btn-primary">はい</button>
+							<button type="button" class="btn btn-danger" data-dismiss="modal">いいえ</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
