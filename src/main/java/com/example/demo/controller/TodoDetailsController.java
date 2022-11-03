@@ -33,7 +33,6 @@ public class TodoDetailsController {
 	@PostMapping("/{id}")
 	public String postTodoDetails(@ModelAttribute @Validated ChangeTodoDetailForm form, Model model, @PathVariable("id") int id) {
 
-		System.out.println(form.getIsDone());
 		TodoDetails todoDetails = new TodoDetails();
 
 		todoDetails.setTitle(form.getTitle());
