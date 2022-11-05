@@ -11,7 +11,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Data;
 
 @Data
-public class ChangeTodoDetailForm {
+public class TodoForm {
 	@NotBlank
 	@Length(min=1, max=50)
 	private String title;

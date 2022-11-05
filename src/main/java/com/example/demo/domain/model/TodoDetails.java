@@ -10,5 +10,4 @@ public class TodoDetails {
 	private String title;
 	private String isDone;
 	private LocalDate timeLimit;
-	private boolean blIsDone;
 }

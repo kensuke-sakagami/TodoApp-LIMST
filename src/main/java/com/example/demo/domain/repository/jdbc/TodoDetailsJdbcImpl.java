@@ -104,4 +104,30 @@ public class TodoDetailsJdbcImpl implements TodoDetailsDao{
 		return rowNumber;
 	}
 
+	@Override
+	public int insertOne(TodoDetails todoDetails) throws DataAccessException {
+		boolean isDone;
+		if(todoDetails.getIsDone()!= null) {
+			isDone = true;
+		}else {
+			isDone = false;
+		}
+		int rowNumber = jdbc.update("INSERT INTO todo_details(title,"
+				+ " is_done,"
+				+ " time_limit)"
+				+ " VALUES(?,?,?)",
+				todoDetails.getTitle(),
+				isDone,
+				todoDetails.getTimeLimit());
+		
+		return rowNumber;
+	}
+
+	@Override
+	public int deleteAll() throws DataAccessException {
+		int rowNumber = jdbc.update("DELETE FROM todo_details"
+				+ " WHERE is_done = true");
+		return rowNumber;
+	}
+
 }

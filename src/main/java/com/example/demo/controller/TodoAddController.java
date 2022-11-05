@@ -7,7 +7,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.domain.model.TodoForm;
@@ -15,35 +14,27 @@ import com.example.demo.domain.model.TodoDetails;
 import com.example.demo.domain.repository.TodoDetailsDao;
 
 @Controller
-public class TodoDetailsController {
+public class TodoAddController {
 	@Autowired
 	TodoDetailsDao dao;
-	@Autowired
-	TodoListController todoListController;
-	@GetMapping("/{id}")
-	public String getTodoDetails(@ModelAttribute TodoForm form, Model model, @PathVariable("id") int id) {
-		TodoDetails todoDetailsList = dao.selectOne(id);
 
-		form.setTitle(todoDetailsList.getTitle());
-		form.setDate(todoDetailsList.getTimeLimit());
-		form.setIsDone(todoDetailsList.getIsDone());
-		model.addAttribute("changeTodoDetailForm", form);
-		return "Todo/TodoDetail";
+	@GetMapping("/add")
+	public String getTodoAdd(Model model, @ModelAttribute TodoForm form) {
+		return "Todo/TodoAdd";
 	}
 
-	@PostMapping("/{id}")
-	public String postTodoDetails(Model model, @ModelAttribute @Validated TodoForm form, BindingResult bindingResult, @PathVariable("id") int id) {
+	@PostMapping("/add")
+	public String postTodoAdd(Model model, @ModelAttribute @Validated TodoForm form, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
-			return getTodoDetails(form, model, id);
+			return getTodoAdd(model, form);
 		}
-		
-		TodoDetails todoDetails = new TodoDetails();
 
+		TodoDetails todoDetails = new TodoDetails();
 		todoDetails.setTitle(form.getTitle());
 		todoDetails.setIsDone(form.getIsDone());
 		todoDetails.setTimeLimit(form.getDate());
-		todoDetails.setId(id);
-		dao.updateOne(todoDetails);
+
+		dao.insertOne(todoDetails);
 		return "redirect:/";
 	}
 }

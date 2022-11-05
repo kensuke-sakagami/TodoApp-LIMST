@@ -15,5 +15,8 @@ public interface TodoDetailsDao {
 	public TodoDetails selectOne(int id) throws DataAccessException;
 
 	public int updateOne(TodoDetails todoDetails) throws DataAccessException;
-
+	
+	public int insertOne(TodoDetails todoDetails) throws DataAccessException;
+	
+	public int deleteAll() throws DataAccessException;
 }

@@ -20,7 +20,7 @@
 	<div class="container">
 		<h1 class="col text-center">TodoList</h1>
 		<!-- todo追加画面へのリンク作成 -->
-		<a th:href="@{'/'}" class="text-center"><font size="5">TODO追加</font></a>
+		<a th:href="@{'/add'}" class="text-center"><font size="5">TODO追加</font></a>
 		<h2 class="text-center">未完了リスト</h2>
 		<table class="table table-bordered table-hover table-striped">
 			<tr>
@@ -52,7 +52,27 @@
 				<td><a th:href="@{'/'+${todoDetails.id}}">詳細</a></td>
 			</tr>
 		</table>
-		<a class="btn btn-primary">完了済みを削除</a>
+		<form method="post" th:action="@{'/delete'}">
+			<button type="button"
+				class="btn btn-primary d-block mx-auto padding-ten-hundred"
+				data-toggle="modal" data-target="#testModal">削除</button>
+			<!-- ボタン・リンククリック後に表示される画面の内容 -->
+			<div class="modal fade" id="testModal" tabindex="-1" role="dialog"
+				aria-labelledby="basicModal" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<h2>削除確認画面</h2>
+						<div class="modal-body">
+							<label>本当に削除しますか？</label>
+						</div>
+						<div class="modal-footer">
+							<button type="submit" class="btn btn-primary">はい</button>
+							<button type="button" class="btn btn-danger" data-dismiss="modal">いいえ</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
 	</div>
 </body>
 </html>
