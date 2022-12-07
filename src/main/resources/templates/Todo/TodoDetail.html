@@ -19,8 +19,8 @@
 		<form method="post" th:action="@{'/'+${id}}"
 			th:object="${changeTodoDetailForm}">
 			<div class="font-weight-bold text-center">タイトル</div>
-			<div class="form-group margin-contract">
-				<input type="text" class="form-control" th:field="*{title}">
+			<div class="form-group margin-contract text-center">
+				<input  type="text" class="form-control" th:field="*{title}">
 			</div>
 			<div class="font-weight-bold text-center">期日</div>
 			<div class="form-group margin-contract">
