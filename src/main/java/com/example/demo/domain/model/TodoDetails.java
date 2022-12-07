@@ -8,6 +8,6 @@ import lombok.Data;
 public class TodoDetails {
 	private int id; 
 	private String title;
-	private String isDone;
+	private boolean isDone;
 	private LocalDate timeLimit;
 }

@@ -31,7 +31,7 @@
 			<div class="form-group margin-contract">
 				<div class="form-group"
 					th:classappend="${#fields.hasErrors('date')} ? 'has-error'">
-					<input type="date" class="form-control" th:field="*{date}" /> <span
+					<input type="date" class="form-control" th:field="*{date}" th:value="*{date}"/> <span
 						class="text-danger" th:if="${#fields.hasErrors('date')}"
 						th:errors="*{date}">date error </span>
 				</div>
@@ -39,7 +39,7 @@
 			<div class="form-group">
 				<div class="container text-center">
 					<input type="checkbox" value=true id=completion-check
-						th:field="*{isDone}" /> <label for=completion-check>完了フラグ</label>
+						th:field="*{Done}" /> <label for=completion-check>完了フラグ</label>
 				</div>
 			</div>
 			<button type="button" class="btn btn-primary d-block mx-auto"

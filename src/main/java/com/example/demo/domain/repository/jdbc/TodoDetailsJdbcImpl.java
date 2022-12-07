@@ -16,8 +16,8 @@ import com.example.demo.domain.repository.TodoDetailsDao;
 public class TodoDetailsJdbcImpl implements TodoDetailsDao{
 	@Autowired
 	JdbcTemplate jdbc;
-	
-	
+
+
 	// TodoDetailsテーブルの全データを取得.
 	@Override
 	public List<TodoDetails> TrueSelectMany() throws DataAccessException {
@@ -64,32 +64,20 @@ public class TodoDetailsJdbcImpl implements TodoDetailsDao{
 	public TodoDetails selectOne(int id) throws DataAccessException {
 		//TodoDetailsテーブルのデータを全件取得
 		Map<String, Object> map= jdbc.queryForMap("SELECT * FROM todo_details WHERE id = ?", id); 
-		
-			//TodoDetailsインスタンスの作成
-			TodoDetails todoDetails = new TodoDetails();
-			//TodoDetailsインスタンスに取得したデータをセット
-			todoDetails.setId((int)map.get("id"));
-			todoDetails.setTitle((String)map.get("title"));
-			todoDetails.setTimeLimit(((java.sql.Date)map.get("time_limit")).toLocalDate());
-			
-			boolean isDone =((boolean)map.get("is_done"));
-			
-			if(isDone) {
-				todoDetails.setIsDone("true");
-			}else {
-				todoDetails.setIsDone("false");
-			}
+
+		//TodoDetailsインスタンスの作成
+		TodoDetails todoDetails = new TodoDetails();
+		//TodoDetailsインスタンスに取得したデータをセット
+		todoDetails.setId((int)map.get("id"));
+		todoDetails.setTitle((String)map.get("title"));
+		todoDetails.setTimeLimit(((java.sql.Date)map.get("time_limit")).toLocalDate());
+		todoDetails.setDone((boolean)map.get("is_done"));
+	
 		return todoDetails;
 	}
-	
+
 	@Override
 	public int updateOne(TodoDetails todoDetails)throws DataAccessException {
-		boolean isDone;
-		if(todoDetails.getIsDone()!= null) {
-			isDone = true;
-		}else {
-			isDone = false;
-		}
 		int rowNumber = jdbc.update("UPDATE todo_details"
 				+ " SET"
 				+ " title = ?,"
@@ -97,29 +85,23 @@ public class TodoDetailsJdbcImpl implements TodoDetailsDao{
 				+ " time_limit = ?"
 				+ " WHERE id = ?"
 				,todoDetails.getTitle()
-				,isDone
+				,todoDetails.isDone()			
 				,todoDetails.getTimeLimit()
 				,todoDetails.getId());
-		
+
 		return rowNumber;
 	}
 
 	@Override
 	public int insertOne(TodoDetails todoDetails) throws DataAccessException {
-		boolean isDone;
-		if(todoDetails.getIsDone()!= null) {
-			isDone = true;
-		}else {
-			isDone = false;
-		}
 		int rowNumber = jdbc.update("INSERT INTO todo_details(title,"
 				+ " is_done,"
 				+ " time_limit)"
 				+ " VALUES(?,?,?)",
 				todoDetails.getTitle(),
-				isDone,
+				todoDetails.isDone(),
 				todoDetails.getTimeLimit());
-		
+
 		return rowNumber;
 	}
 
