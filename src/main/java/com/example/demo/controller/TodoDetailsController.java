@@ -25,7 +25,7 @@ public class TodoDetailsController {
 
 		form.setTitle(todoDetailsList.getTitle());
 		form.setDate(todoDetailsList.getTimeLimit());
-		form.setIsDone(todoDetailsList.getIsDone());
+		form.setDone(todoDetailsList.isDone());
 		model.addAttribute("changeTodoDetailForm", form);
 		return "Todo/TodoDetail";
 	}
@@ -36,7 +36,7 @@ public class TodoDetailsController {
 		TodoDetails todoDetails = new TodoDetails();
 
 		todoDetails.setTitle(form.getTitle());
-		todoDetails.setIsDone(form.getIsDone());
+		todoDetails.setDone(form.isDone());
 		todoDetails.setTimeLimit(form.getDate());
 		todoDetails.setId(id);
 		dao.updateOne(todoDetails);

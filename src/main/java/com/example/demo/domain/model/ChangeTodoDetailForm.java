@@ -20,5 +20,5 @@ public class ChangeTodoDetailForm {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate date;
 	
-	private String isDone; //チェックボタン
+	private boolean isDone; //チェックボタン
 }
