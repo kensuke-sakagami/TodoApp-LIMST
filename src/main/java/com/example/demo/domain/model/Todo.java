@@ -5,9 +5,9 @@ import java.time.LocalDate;
 import lombok.Data;
 
 @Data
-public class TodoDetails {
+public class Todo {
 	private int id; 
 	private String title;
 	private LocalDate timeLimit;
-	private boolean isDone;
+	private Boolean isDone;
 }

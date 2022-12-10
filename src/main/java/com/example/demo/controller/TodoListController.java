@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.example.demo.domain.model.TodoDetails;
+import com.example.demo.domain.model.Todo;
 import com.example.demo.domain.repository.TodoDetailsDao;
 
 
@@ -18,8 +18,8 @@ public class TodoListController {
 	//ログイン用のGETコントローラー
 	@GetMapping("/")
 	public String getTodoList(Model model) {
-		List<TodoDetails> trueTodoDetailsList = dao.TrueSelectMany();
-		List<TodoDetails> falseTodoDetailsList = dao.FalseSelectMany();
+		List<Todo> trueTodoDetailsList = dao.TrueSelectMany();
+		List<Todo> falseTodoDetailsList = dao.FalseSelectMany();
 
 		model.addAttribute("trueTodoDetailsList", trueTodoDetailsList);
 		model.addAttribute("falseTodoDetailsList", falseTodoDetailsList);

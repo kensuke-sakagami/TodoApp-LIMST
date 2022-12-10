@@ -11,7 +11,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Data;
 
 @Data
-public class ChangeTodoDetailForm {
+public class TodoDetailsForm {
 	@NotBlank
 	@Length(min=1, max=50)
 	private String title;
@@ -20,5 +20,5 @@ public class ChangeTodoDetailForm {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate date;
 	
-	private boolean isDone; //チェックボタン
+	private Boolean isDone; //チェックボタン
 }
