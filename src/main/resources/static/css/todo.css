@@ -1,0 +1,84 @@
+body {
+	padding-top: 50px;
+}
+
+input {
+	text-align: center;
+}
+.main {
+	padding-top: 20px;
+	padding-left: 20px;
+	top: 0px;
+	bottom: 0;
+}
+
+button {
+	margin-top: 10px;
+	margin-right: 5px;
+}
+
+header {
+	height: 40px;
+}
+
+.padding {
+	margin-right: 20px;
+	margin-left: 20px;
+}
+
+.padding-adminHome {
+	padding: 100px 100px;
+}
+
+.margin-top-nineth {
+	margin-top: 90px;
+}
+
+.margin-contract {
+	margin-right: 350px;
+	margin-left: 350px;
+}
+
+.padding-fifth {
+	padding: 0 50px;
+}
+
+.padding-fourHundred {
+	padding: 0 400px;
+}
+
+.padding-fifth-updown {
+	padding: 50px 0;
+}
+
+.padding-top-twenty {
+	padding-top: 20px;
+}
+
+.padding-bottom-ten {
+	padding-bottom: 10px;
+}
+
+.padding-ten-hundred {
+	padding: 10px 100px;
+}
+
+.padding-twoHundredfifth {
+	padding: 0px 250px;
+}
+
+.margin-bottom-fifth {
+	margin-bottom: 50px;
+}
+
+.display-flex {
+	display: flex;
+}
+
+.display-block {
+	display: block;
+}
+
+.nav-tabs .nav-link.active {
+	background-color: #A7F1FF;
+}
